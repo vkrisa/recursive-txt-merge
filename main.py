@@ -16,7 +16,7 @@ def recursive_collect(path: pathlib.Path):
 
 
 def merge_lines(lines: [str]):
-    return ''.join(lines).strip()
+    return ''.join(lines).strip().replace('\n', '')
 
 
 def process(files: [str]):
