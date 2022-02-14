@@ -49,4 +49,5 @@ def write_txt(path: str, data):
 if __name__ == '__main__':
     files = recursive_collect(args.root)
     meta, data = process(files)
-    print(data[-1])
+    write_json('url2text.json', meta)
+    write_txt('texts.txt', data)
