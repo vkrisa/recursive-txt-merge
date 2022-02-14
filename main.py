@@ -20,11 +20,15 @@ def merge_lines(lines: [str]):
 
 
 def process(files: [str]):
+    meta = dict()
+    data = list()
     for file in files:
         f_content = read(file)
         link = merge_lines(f_content[:1])
         text = merge_lines(f_content[1:])
-        yield {'source': link, 'text': text}, text
+        meta.update({'source': link, 'text': text})
+        data.append(text)
+    return meta, data
 
 
 def read(path: pathlib.Path):
@@ -44,5 +48,5 @@ def write_txt(path: str, data):
 
 if __name__ == '__main__':
     files = recursive_collect(args.root)
-    meta, data = list(process(files))
+    meta, data = process(files)
     print(data[-1])
