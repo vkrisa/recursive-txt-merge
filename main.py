@@ -20,13 +20,13 @@ def merge_lines(lines: [str]):
 
 
 def process(files: [str]):
-    meta = dict()
+    meta = list()
     data = list()
     for file in files:
         f_content = read(file)
         link = merge_lines(f_content[:1])
         text = merge_lines(f_content[1:])
-        meta.update({'source': link, 'text': text})
+        meta.append({'source': link, 'text': text})
         data.append(text)
     return meta, data
 
